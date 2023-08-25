@@ -9,34 +9,37 @@
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <script src="./botones.js"></script>
         <div class="container-fluid" id="pagina">
             <div>
-                <audio id="m" src="miaudio.mp3" autorplay></audio>
-                <audio id="sabado" src="sabadoo.mp3" autorplay></audio>
-                <audio id="orina" src="orina.mp3" autorplay></audio>
-                <audio id="llorar" src="llorar.mp3" autorplay></audio>
-                <audio id="facil" src="facil.mp3" autorplay></audio>
-                <audio id="teamo" src="teamo.mp3" autorplay></audio>
-                <audio id="lagartijo" src="lagartijo.mp3" autorplay></audio>
-                <audio id="manzana" src="manzana.mp3" autorplay></audio>
-                <audio id="milagros" src="milagros.mp3" autorplay></audio>
+              
+                <audio id="audio" autorplay>
+                    <source id = "fuente" src = "" type="audio/mpeg"></source>
+                    noponoponopo
+                </audio>
+                <audio id="sabado" src="sonidos/sabadoo.mp3" autorplay></audio>
+        
     
     
+                <script>
+                    conectarBD();
+                </script>
+                <div id = "datosRecibidos" class="datosRecibidos"></div>
     
                 <div class="row" style="text-align:center;">
-                    <div class="col"><button type="button" class="btn btn-primary" onclick="document.getElementById('m').play()">VICTOR Y JOEL</button></div>
-                    <div class="col"><button type="button" class="btn btn-primary" onclick="document.getElementById('sabado').play()">SABADOO</button></div>
-                    <div class="col"><button type="button" class="btn btn-primary" onclick="document.getElementById('orina').play()">HAPPY BIRTHDAY</button></div>
+                    <div class="col"><button type="button" class="btn btn-primary" onclick="agarrarLinkConId(1)">VICTOR Y JOEL</button></div>
+                    <div class="col"><button type="button" class="btn btn-primary" onclick="agarrarLinkConId(2)">SABADOO</button></div>
+                    <div class="col"><button type="button" class="btn btn-primary" onclick="agarrarLinkConId(3)">HAPPY BIRTHDAY</button></div>
                 </div>
                 <div class="row" style="text-align:center;">
-                    <div class="col"><button type="button" class="btn btn-primary" onclick="document.getElementById('llorar').play()">LLORAR</button></div>
-                    <div class="col"><button type="button" class="btn btn-primary" onclick="document.getElementById('facil').play()">FACIL</button></div>
-                    <div class="col"><button type="button" class="btn btn-primary" onclick="document.getElementById('teamo').play()">TE AMOOOOO</button></div>
+                    <div class="col"><button type="button" class="btn btn-primary" onclick="agarrarLinkConId(4)">LLORAR</button></div>
+                    <div class="col"><button type="button" class="btn btn-primary" onclick="agarrarLinkConId(5)">FACIL</button></div>
+                    <div class="col"><button type="button" class="btn btn-primary" onclick="agarrarLinkConId(6)">TE AMOOOOO</button></div>
                 </div>
                 <div class="row" style="text-align:center;">
-                    <div class="col"><button type="button" class="btn btn-primary" onclick="document.getElementById('lagartijo').play()">LAGALTIJO IGUANA LAGALTO</button></div>
-                    <div class="col"><button type="button" class="btn btn-primary" onclick="document.getElementById('manzana').play()">MANZANA</button></div>
-                    <div class="col"><button type="button" class="btn btn-primary" onclick="document.getElementById('milagros').play()">MILAGROOS</button></div>
+                    <div class="col"><button type="button" class="btn btn-primary" onclick="agarrarLinkConId(7)">LAGALTIJO IGUANA LAGALTO</button></div>
+                    <div class="col"><button type="button" class="btn btn-primary" onclick="agarrarLinkConId(8)">MANZANA</button></div>
+                    <div class="col"><button type="button" class="btn btn-primary" onclick="agarrarLinkConId(9)">MILAGROOS</button></div>
                 </div>
 
             </div>
