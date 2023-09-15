@@ -5,7 +5,7 @@ let mysql = require('mysql');
 let app = express();
 app.use(cors());
 app.use(express.json());
-app.listen(8000);
+app.listen(8080);
 
 let conexion;
 
@@ -21,6 +21,11 @@ app.get('/inicio', function (solicitud, respuesta) {
 })
 /*app.post("/insertar", function(solicitud, respuesta){
     let nombre = solicitud.body.nombre;
+    let duracion = solicitud.body.duracion;
+    let tipo = solicitud.body.tipo;
+    let autores = solicitud.body.autores;
+    let url = solicitud.body.url;
+
     let consulta = "INSERT INTO botoncitos (nombre, duracion, tipo, autores, url) values (" + nombre + ");";
     conexion.query(consulta, function(resultado){
         respuesta.send(resultado);
@@ -28,7 +33,7 @@ app.get('/inicio', function (solicitud, respuesta) {
 
 })*/
 
-app.post('/sonidos', function (req, res){
+app.post('/agregarSonido', function (req, res){
     console.log(req.body);
    var nombre1 = req.body["nombre"];
     var duracion = req.body["duracion"];
@@ -36,7 +41,7 @@ app.post('/sonidos', function (req, res){
     var autores = req.body["autores"];
     var url = req.body["url"];
 
-    let query = "insert into Sonido (nombre, duracion, tipo, autores, url) values ('" + nombre1 + "', '" + duracion + "', '" + tipo + "', '" + autores +"', '" + url +"');"
+    let query = "insert into Sonido (nombre, duracion, tipo, autores, url) values ('" + nombre1 + "', " + duracion + ", '" + tipo + "', '" + autores +"', '" + url +"');"
     conexion.query(query, function (err, result, filed) {
         if (err) throw err
         console.log(result);
@@ -113,13 +118,13 @@ app.delete("/eliminarDatos/:id", function(solicitud, respuesta){
 
 app.put ("modificarDatos/:id", function(solicitud, respuesta){
     let id = solicitud.params.id;
-    let url = solicitud.body.url;
+    let url1 = solicitud.body.url;
     let nombre = solicitud.body.nombre;
     let duracion = solicitud.body.duracion;
     let tipo = solicitud.body.tipo;
     let autores = solicitud.body.autores;
 
-    let consulta = 'UPDATE Sonido SET url = ' + url + ', nombre = ' + nombre + ', duracion = ' + duracion + ', tipo = ' + tipo + ', autores = ' + autores + ' where id = ' + id + ';';
+    let consulta = 'UPDATE Sonido SET url = "' + url1 + '", nombre = "' + nombre + '", duracion = ' + duracion + ', tipo = "' + tipo + '", autores = "' + autores + '" where id = ' + id + ';';
     conexion.query(consulta, function (err,resultado){
         if (err) throw err;
         respuesta.send(resultado);

@@ -2,7 +2,7 @@
     
     function conectarBD(){
         $.ajax({
-            url : "http://localhost:8000/inicio",
+            url : "http://localhost:8080/inicio",
             type : 'GET'
         })
 
@@ -11,7 +11,7 @@
         })
 
         .fail(function(jqXHR, textStatus, errorThrown){
-            console.log("ERROR   ajá ajá");
+            console.log("ERROR conectarBD");
             console.log(jqXHR);
             console.log(textStatus);
             console.log(errorThrown);
@@ -20,7 +20,6 @@
    }
    function insertarDatos(){
         var formulario = new FormData();
-        // console.log($('formulario').serialize());
         var nombre = document.getElementById("nombre").value;
         var duracion = document.getElementById("duracion").value;
         var tipo = document.getElementById("tipo").value;
@@ -30,11 +29,10 @@
         console.log(data);
 
         $.ajax({
-            url:"http://localhost:8000/sonidos",
+            url:"http://localhost:8080/agregarSonido",
             type: "POST",
             contentType : 'application/json',
             data: JSON.stringify(data)
-            // data: $('form').serialize(),
         })
 
         .done(function(data){
@@ -52,7 +50,7 @@
     function eliminarSonido(){
         var id = document.getElementById("num").value;
         $.ajax({
-            url: "http://localhost:8000/eliminarDatos/" + id,
+            url: "http://localhost:8080/eliminarDatos/" + id,
             type: 'DELETE'
         })
         
@@ -68,32 +66,10 @@
         })
     }
 
-    function modificarAudio(){
-        var id = document.getElementById("num").value;
-        $.ajax({
-            url: "http://localhost:8000/modificarDatos/" + id,
-            type: 'PATCH',
-            contentType: "application/json",
-            data: JSON.stringify(data)
-        })
-
-        .done(function(data){
-            console.log("joyaaaaaa");
-        })
-
-        .fail(function(jqXHR, textStatus, errorThrown){
-            console.log("Error de eliminacion de datos");
-            console.log(jqXHR);
-            console.log(textStatus);
-            console.log(errorThrown);
-        })
-    }
-
-
 
    function agarrarLinkConId(id){
     $.ajax({
-        url : "http://localhost:8000/sonidos/" + id,
+        url : "http://localhost:8080/sonidos/" + id,
         type : 'GET'
     })
     .done(function(data){
@@ -114,7 +90,7 @@
 
    function agarrarDatos(id){
         $.ajax({
-            url : "http://localhost:8000/sonidosDatos/" + id,
+            url : "http://localhost:8080/sonidosDatos/" + id,
             type : 'GET'
         })
         .done(function(data){
@@ -145,7 +121,7 @@
     }
         function agarrarDatosCompletos(){
             $.ajax({
-                url : "http://localhost:8000/sonidosDatos",
+                url : "http://localhost:8080/sonidosDatos",
                 type : 'GET'
             })
             .done(function(data){
@@ -174,4 +150,35 @@
                 console.log(errorThrown);
             })
         }
+        function modificarDatos(){
+            var formulario = new FormData();
+            var id = document.getElementById("id").value;
+            var nombre = document.getElementById("nombre").value;
+            var duracion = document.getElementById("duracion").value;
+            var tipo = document.getElementById("tipo").value;
+            var autores = document.getElementById("autores").value;
+            var url = document.getElementById("url").value;
+            let data = {"id": id, "nombre": nombre, "duracion": duracion,"tipo": tipo,"autores": autores,"url": url};
+            console.log(data);
+    
+    
+            $.ajax({
+                url: "http://localhost:8080/modificarDatos/" + id,
+                type: 'PATCH',
+                contentType: "application/json",
+                data: JSON.stringify(data)
+            })
+    
+            .done(function(data){
+                console.log("FUNCIONA MODIFICACION");
+            })
+    
+            .fail(function(jqXHR, textStatus, errorThrown){
+                console.log("Error de modificacion de datos");
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+            })
+        }
+    
    
